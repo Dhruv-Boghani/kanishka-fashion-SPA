@@ -170,7 +170,7 @@ export default function BackgroundModel() {
         execution-while-not-rendered="true"
         web-share="true"
         // We scale it up so it feels like a large background element centered on the screen
-        className={`w-[150vw] h-[150vh] md:w-[120vw] md:h-[120vh] max-w-none border-none object-cover transform translate-y-[20vh] md:translate-y-[20vh] transition-opacity duration-1000 ${isModelLoaded ? "opacity-100" : "opacity-0"}`}
+        className={`w-[150vw] h-[150vh] md:w-[120vw] md:h-[120vh] max-w-none border-none object-cover transform translate-y-[20vh] md:translate-y-[10vh] transition-opacity duration-1000 ${isModelLoaded ? "opacity-100" : "opacity-0"}`}
       ></iframe>
     </div>
   );
