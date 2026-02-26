@@ -61,10 +61,9 @@ export default function ReviewSection() {
         ).toFixed(1)
       : 0;
 
-  // Sort by rating to show the best ones first, otherwise use chronological order
-  const displayedReviews = showAll
-    ? reviews
-    : [...reviews].sort((a, b) => b.rating - a.rating).slice(0, 4);
+  // Sort by rating to show the best ones first
+  const sortedReviews = [...reviews].sort((a, b) => b.rating - a.rating);
+  const displayedReviews = showAll ? sortedReviews : sortedReviews.slice(0, 4);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,7 +94,7 @@ export default function ReviewSection() {
   return (
     <section
       id="reviews"
-      className="py-16 lg:py-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
+      className="py-16 lg:py-24 bg-white/15 dark:bg-slate-950/15 backdrop-blur-[2px] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Scroll Reveal Header */}
       <motion.div
@@ -128,16 +127,31 @@ export default function ReviewSection() {
               </span>
               <div className="flex flex-col items-start gap-1">
                 <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-5 h-5 ${
-                        i < Math.round(averageRating)
-                          ? "fill-emerald-400 text-emerald-400"
-                          : "fill-slate-200 text-slate-200 dark:fill-slate-700 dark:text-slate-700"
-                      }`}
-                    />
-                  ))}
+                  {[...Array(5)].map((_, i) => {
+                    const ratingValue = Number(averageRating);
+                    const isFullStar = i < Math.floor(ratingValue);
+                    const isPartialStar =
+                      i === Math.floor(ratingValue) && ratingValue % 1 > 0;
+                    const fillPercentage = isFullStar
+                      ? 100
+                      : isPartialStar
+                        ? (ratingValue % 1) * 100
+                        : 0;
+
+                    return (
+                      <div key={i} className="relative w-5 h-5 shrink-0">
+                        <Star className="absolute top-0 left-0 w-5 h-5 fill-slate-200 text-slate-200 dark:fill-slate-700 dark:text-slate-700" />
+                        {fillPercentage > 0 && (
+                          <div
+                            className="absolute top-0 left-0 overflow-hidden h-full"
+                            style={{ width: `${fillPercentage}%` }}
+                          >
+                            <Star className="w-5 h-5 fill-emerald-400 text-emerald-400 max-w-none" />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
                 <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
                   Based on{" "}
@@ -258,9 +272,9 @@ export default function ReviewSection() {
           <div
             className={`transition-all duration-500 ease-in-out ${showAll ? "max-h-[700px] overflow-y-auto pr-4 custom-scrollbar" : ""}`}
           >
-            <div className="columns-1 md:columns-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {displayedReviews.map((review, index) => (
-                <div key={review.id} className="break-inside-avoid mb-6">
+                <div key={review.id} className="h-full">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -283,7 +297,7 @@ export default function ReviewSection() {
                       </span>
                     </div>
 
-                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 flex-grow italic">
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 flex-grow italic line-clamp-4">
                       "{review.description}"
                     </p>
 

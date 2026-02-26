@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Diamond, BadgeCheck, Store } from "lucide-react";
+import { Sparkles, Store, Layers, Gem } from "lucide-react";
 
 // Common floating animation for small decorative elements
 const floatAnimation = {
@@ -19,18 +19,19 @@ const features = [
     icon: <Store className="w-6 h-6 text-emerald-500" />,
     title: "Surat's Finest",
     description:
-      "Direct from the textile hub, ensuring authentic fabrics and unmatched quality.",
+      "Direct from the textile hub, ensuring authentic fabrics and the latest trends.",
   },
   {
-    icon: <BadgeCheck className="w-6 h-6 text-emerald-500" />,
+    icon: <Layers className="w-6 h-6 text-emerald-500" />,
     title: "Wholesale & Retail",
     description:
-      "The best rates, perfectly tailored whether you buy one piece or one hundred.",
+      "The absolute best rates, whether you buy one piece or one hundred.",
   },
   {
-    icon: <Diamond className="w-6 h-6 text-emerald-500" />,
-    title: "Unbeatable Pricing",
-    description: "Premium, luxurious fashion that fits your budget perfectly.",
+    icon: <Gem className="w-6 h-6 text-emerald-500" />,
+    title: "A Complete Look",
+    description:
+      "From stunning outfits to matching jewelry and footwear, find everything you need in one place.",
   },
 ];
 
@@ -38,7 +39,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300 relative overflow-hidden"
+      className="py-24 bg-white/15 dark:bg-slate-900/15 backdrop-blur-[2px] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-200/20 dark:bg-emerald-600/10 rounded-full blur-3xl pointer-events-none transform translate-x-1/3 -translate-y-1/3" />
@@ -46,7 +47,7 @@ export default function AboutSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +56,7 @@ export default function AboutSection() {
           >
             <span className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold tracking-wider uppercase mb-4 text-sm">
               <Sparkles className="w-4 h-4" />
-              Our Story
+              Premium Quality. Unbeatable Prices.
               <Sparkles className="w-4 h-4" />
             </span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
@@ -65,24 +66,25 @@ export default function AboutSection() {
                 Where Elegance Meets Affordability
               </span>
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-light">
-              Located in the textile heart of Surat, Kanishka Fashion is your
-              ultimate destination for premium women's clothing. Whether you are
-              looking for wholesale bulk orders or a single beautiful piece for
-              your wardrobe, we bridge the gap between high-end fashion and
-              everyday affordability.
-              <br className="hidden md:block" />
-              <br className="hidden md:block" />
-              <strong className="font-semibold text-slate-800 dark:text-slate-200">
-                Our mission is simple:
-              </strong>{" "}
-              to provide the absolute best quality ethnic and modern wear at the
-              lowest possible prices.
-            </p>
+            <div className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-light space-y-6">
+              <p>
+                <strong>Our Story: From 2020 to Today</strong>
+                <br />
+                Located in the textile heart of Surat, Kanishka Fashion began
+                its journey in June 2020 as a small, dedicated saree shop.
+                Thanks to our commitment to quality and the love of our
+                customers, we have proudly grown into two specialized stores:
+                one exclusively featuring stunning Imitation Jewelry, and
+                another offering a beautifully curated mix of Sarees, Kurtis,
+                and modern wear. Whether you are looking for wholesale bulk
+                orders or a single beautiful piece for your wardrobe, we bridge
+                the gap between high-end fashion and everyday affordability.
+              </p>
+            </div>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Side: Collections List */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -96,8 +98,8 @@ export default function AboutSection() {
                 Our Premium Collection
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-6 font-light">
-                We offer a massive, carefully curated selection of women's
-                apparel designed for every occasion.
+                We have expanded our catalog to offer a complete, head-to-toe
+                fashion experience:
               </p>
 
               <ul className="space-y-4">
@@ -105,10 +107,37 @@ export default function AboutSection() {
                   <div className="w-2 h-2 mt-2 rounded-full bg-emerald-400 shrink-0" />
                   <div>
                     <strong className="text-slate-900 dark:text-white block mb-1">
-                      Trendy Western & Indo-Western
+                      The Kanishka Specialty
                     </strong>
                     <span className="text-slate-600 dark:text-slate-400 text-sm">
-                      Stylish Dresses, Modern Co-ord Sets, and Elegant Tunics.
+                      Our signature, highly sought-after{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                        Jaipuri 60/60 Pure Cotton 3-Piece Suits
+                      </span>{" "}
+                      at the most affordable prices in the market.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-transform hover:-translate-y-1">
+                  <div className="w-2 h-2 mt-2 rounded-full bg-emerald-400 shrink-0" />
+                  <div>
+                    <strong className="text-slate-900 dark:text-white block mb-1">
+                      Sarees & Kurtis
+                    </strong>
+                    <span className="text-slate-600 dark:text-slate-400 text-sm">
+                      A beautiful variety of traditional and modern wear,
+                      featuring luxurious Pashmina and classic Kalamkari prints.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-transform hover:-translate-y-1">
+                  <div className="w-2 h-2 mt-2 rounded-full bg-emerald-400 shrink-0" />
+                  <div>
+                    <strong className="text-slate-900 dark:text-white block mb-1">
+                      Western & Indo-Western
+                    </strong>
+                    <span className="text-slate-600 dark:text-slate-400 text-sm">
+                      Stylish dresses, modern co-ord sets, and elegant tunics.
                     </span>
                   </div>
                 </li>
@@ -119,7 +148,7 @@ export default function AboutSection() {
                       Versatile Bottoms
                     </strong>
                     <span className="text-slate-600 dark:text-slate-400 text-sm">
-                      Premium Pencil Pants and Comfortable Leggings.
+                      Premium pencil pants and comfortable leggings.
                     </span>
                   </div>
                 </li>
@@ -127,11 +156,12 @@ export default function AboutSection() {
                   <div className="w-2 h-2 mt-2 rounded-full bg-emerald-400 shrink-0" />
                   <div>
                     <strong className="text-slate-900 dark:text-white block mb-1">
-                      Our Pride – The Saree Collection
+                      Jewelry & Footwear
                     </strong>
                     <span className="text-slate-600 dark:text-slate-400 text-sm">
-                      A beautiful variety of traditional and modern sarees,
-                      featuring luxurious Pashmina and classic Kalamkari prints.
+                      Complete your look with our dedicated imitation jewelry
+                      collection and authentic, beautiful Jaipuri Mojdi
+                      footwear.
                     </span>
                   </div>
                 </li>
@@ -139,40 +169,53 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right Side: The Specialty Card (Floating) */}
+          {/* Right Side: Vision and Mission Cards (Floating) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative space-y-6"
           >
+            {/* Vision Card */}
             <motion.div
               {...floatAnimation}
-              className="bg-white dark:bg-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl shadow-emerald-500/10 dark:shadow-slate-950 border border-emerald-100 dark:border-emerald-900/30 relative overflow-hidden"
+              className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-emerald-500/10 dark:shadow-slate-950 border border-emerald-100 dark:border-emerald-900/30 relative overflow-hidden"
             >
               {/* Decorative glowing orb inside card */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-400/20 rounded-full blur-2xl" />
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-400/20 rounded-full blur-2xl pointer-events-none" />
 
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 relative z-10">
-                The Kanishka Specialty
+              <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3 relative z-10">
+                Our Vision
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed relative z-10">
-                What truly sets us apart is our signature{" "}
-                <strong>3-Piece Suit Pair Collection</strong>. We are incredibly
-                proud to offer the highly sought-after{" "}
-                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
-                  Jaipuri 60/60 Pure Cotton 3-Piece Suits
-                </span>
-                .
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed relative z-10">
+                To expand our footprint across all of Gujarat with over{" "}
+                <strong>100 Kanishka Fashion stores</strong>, becoming the
+                ultimate destination for women's clothing. We aim to bring the
+                most famous, sought-after styles and fabrics from all over India
+                directly to our customers.
               </p>
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-700 relative z-10">
-                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
-                  "We guarantee that you will find these top-tier suit sets at
-                  the best, most affordable prices in the market—without ever
-                  compromising on quality."
-                </p>
-              </div>
+            </motion.div>
+
+            {/* Mission Card */}
+            <motion.div
+              {...floatAnimation}
+              // Add a slight delay to the floating animation so they don't move exactly together
+              animate={{
+                ...floatAnimation.animate,
+                transition: { ...floatAnimation.animate.transition, delay: 1 },
+              }}
+              className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl shadow-blue-500/10 dark:shadow-slate-950 border border-emerald-100 dark:border-emerald-900/30 relative overflow-hidden"
+            >
+              <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3 relative z-10">
+                Our Mission
+              </h3>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed relative z-10">
+                To provide the absolute best quality ethnic wear, modern
+                clothing, and fashion accessories at the lowest possible prices,
+                ensuring that every woman can experience premium fashion without
+                compromising her budget.
+              </p>
             </motion.div>
           </motion.div>
         </div>

@@ -70,7 +70,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
+      className="py-24 bg-white/15 dark:bg-slate-950/15 backdrop-blur-[2px] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Background Decor */}
       <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-emerald-100/30 dark:bg-emerald-900/10 rounded-full blur-3xl pointer-events-none transform -translate-x-1/2 -translate-y-1/2" />

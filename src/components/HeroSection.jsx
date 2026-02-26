@@ -30,7 +30,7 @@ const floatingAnimationDelayed = {
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-24 lg:pt-32 pb-10 overflow-hidden flex items-center justify-center bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <section className="relative pt-24 lg:pt-32 pb-10 overflow-hidden flex items-center justify-center bg-transparent transition-colors duration-300">
       {/* Background Decor */}
       <div className="absolute top-1/4 left-10 w-72 h-72 bg-emerald-300/20 dark:bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
