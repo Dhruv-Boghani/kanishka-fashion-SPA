@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { ThemeProvider } from "./components/ThemeContext";
 import Navbar from "./components/Navbar";
@@ -8,9 +8,28 @@ import ReviewSection from "./components/ReviewSection";
 import ContactSection from "./components/ContactSection";
 import AppLoader from "./components/AppLoader";
 import BackgroundModel from "./components/BackgroundModel";
+import LightweightBackground from "./components/LightweightBackground";
 
 function App() {
+  const [isDesktop, setIsDesktop] = useState(true);
+
   useEffect(() => {
+    // Check if device is desktop or mobile based on User-Agent and screen width
+    const checkIsDesktop = () => {
+      const userAgent =
+        typeof navigator === "undefined" ? "" : navigator.userAgent;
+      const isMobile = Boolean(
+        userAgent.match(
+          /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i,
+        ),
+      );
+      const isSmallScreen = window.innerWidth < 1024;
+      setIsDesktop(!isMobile && !isSmallScreen);
+    };
+
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop);
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -34,6 +53,7 @@ function App() {
     requestAnimationFrame(raf);
 
     return () => {
+      window.removeEventListener("resize", checkIsDesktop);
       lenis.destroy();
       window.lenis = undefined;
     };
@@ -43,7 +63,7 @@ function App() {
     <ThemeProvider>
       <AppLoader />
       <div className="min-h-screen flex flex-col font-sans transition-colors duration-300 relative">
-        <BackgroundModel />
+        {isDesktop ? <BackgroundModel /> : <LightweightBackground />}
         <Navbar />
         <main className="grow relative z-10">
           <HeroSection />

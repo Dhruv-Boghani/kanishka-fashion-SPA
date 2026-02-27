@@ -32,4 +32,53 @@
   .dark .custom-scrollbar::-webkit-scrollbar-thumb {
     background-color: #334155;
   }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+  @keyframes float-medium {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(-10deg);
+    }
+  }
+  @keyframes float-fast {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-40px) rotate(15deg);
+    }
+  }
+  @keyframes spin-slow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+  .animate-float-medium {
+    animation: float-medium 8s ease-in-out infinite;
+  }
+  .animate-float-fast {
+    animation: float-fast 5s ease-in-out infinite;
+  }
+  .animate-spin-slow {
+    animation: spin-slow 15s linear infinite;
+  }
 }
