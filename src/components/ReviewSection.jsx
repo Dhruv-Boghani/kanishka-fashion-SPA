@@ -42,7 +42,7 @@ export default function ReviewSection() {
 
   // Fetch reviews from Postgres DB on component mount
   useEffect(() => {
-    fetch("http://localhost:3001/api/reviews")
+    fetch(`${import.meta.env.VITE_API_URL}/api/reviews`)
       .then((res) => res.json())
       .then((data) => {
         // Only replace if we got valid data from the DB
@@ -71,13 +71,16 @@ export default function ReviewSection() {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("http://localhost:3001/api/reviews", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/reviews`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       if (response.ok) {
         const newReview = await response.json();
