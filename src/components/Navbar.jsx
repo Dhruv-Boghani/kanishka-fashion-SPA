@@ -6,6 +6,14 @@ import { motion } from "framer-motion";
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
+  const scrollToTop = () => {
+    if (window.lenis) {
+      window.lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -15,8 +23,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 flex items-center">
-            <span className="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white uppercase leading-none">
+          <div
+            className="flex-shrink-0 flex items-center cursor-pointer group transition-transform hover:scale-105 active:scale-95"
+            onClick={scrollToTop}
+          >
+            <span className="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white uppercase leading-none group-hover:text-emerald-500 transition-colors">
               Kanishka <br />
               <span className="text-emerald-500 text-lg font-light tracking-widest lowercase">
                 Fashion
